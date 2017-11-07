@@ -1,50 +1,40 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <title>PomodoroClock</title>
 
-	<head>
-		<meta charset="utf-8" />
-		<title>番茄钟</title>
-		<link rel="stylesheet" href="css/index.css">
-		<link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Sedgwick+Ave+Display" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <h1>PomodoroClock</h1>
 
-	</head>
+    <div class="main">
+        <div class="control">
+            <div class="break">
+            <p>BREAK LENGTH</p>
+                <i class="fa fa-minus-square-o" aria-hidden="true" id="break-minus"></i>
+                <span id="break-length">5</span>
+                <i class="fa fa-plus-square-o" aria-hidden="true" id="break-plus"></i>
+            </div>
+            <div class="length">
+            <p>SESSION LENGTH</p>
+                <i class="fa fa-minus-square-o" aria-hidden="true" id="session-minus"></i>
+                <span id="session-length">25</span>
+                <i class="fa fa-plus-square-o" aria-hidden="true" id="session-plus"></i>
+            </div>
+        </div>
+        <div class="clock">
+            <h2 id="show-title">Session</h2>
+            <h2 id="show-time">25:00</h2>
+            <span id="per"></span>
 
-	<body>
-		<div id="container">
-			<h1>Pomodoro Clock</h1>
-			<div class="setContainer">
-				<div class="setTimeContainer">
+        </div>
+    </div>
 
-					<div class="setTime">
-						<p class="timeClass">
-							Work-Time
-						</p>
-						<i class="reduce fa fa-minus-square-o" aria-hidden="true" value="work"></i>
-						<input type="text" id="workTime" value="25" />
-						<i class="plus fa fa-plus-square-o" aria-hidden="true" value="work"></i>
-					</div>
-					<div class="setTime">
-						<p class="timeClass">
-							Break-Time
-						</p>
-						<i class="reduce fa fa-minus-square-o" aria-hidden="true" value="break"></i>
-						<input type="text" id="breakTime" value="10" />
-						<i class="plus fa fa-plus-square-o" aria-hidden="true" value="break"></i>
-					</div>
-				</div>
-
-			</div>
-			<div class="clock">
-				<h1 class="showCondition">
-					Work
-				</h1>				
-				<div class="showTime">
-					25:00
-				</div>
-			</div>
-		</div>
-		<script src='jQuery/jquery-3.2.1.min.js'></script>
-		<script src="js/index.js"></script>
-	</body>
-
+<script src='jQuery/jquery-3.2.1.min.js'></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
 </html>
