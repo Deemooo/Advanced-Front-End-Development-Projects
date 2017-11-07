@@ -9,12 +9,12 @@ $(function() {
 		$("#workTime").val(flag === "work" ? --workTime : workTime);
 		$("#breakTime").val(flag === "break" ? --breakTime : breakTime);
 	}
-
 	function plusTimeValue() {
 		var flag = $(this).attr("value");
 		$("#workTime").val(flag === "work" ? ++workTime : workTime);
 		$("#breakTime").val(flag === "break" ? ++breakTime : breakTime);
 	}
+	
 	$(".clock").click(startClock);
 
 	function startClock() {
