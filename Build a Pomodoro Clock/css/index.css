@@ -1,0 +1,72 @@
+html,
+body {
+	height: 100%;
+	width: 100%;
+	background-color: #cb4042;
+	overflow: hidden;
+	color: #FFFFFF;
+}
+
+#container {
+	margin-top: 5%;
+}
+
+h1 {
+	text-align: center;
+}
+
+.setTimeContainer {
+	width: 500px;
+	margin: 0 auto;
+	font-size: 0;
+}
+
+.setTime {
+	display: inline-block;
+	width: 250px;
+	font-size: 20px;
+	text-align: center;
+}
+
+input[type=text] {
+	width: 50px;
+	height: 50px;
+	color: #FFFFFF;
+	background-color: #cb4042;
+	text-align: center;
+	padding: 0px;
+	border: 0px;
+	font-size: 30px;
+}
+
+.fa {
+	cursor: pointer;
+}
+
+.clock {
+	width: 300px;
+	height: 300px;
+	margin: 50px auto;
+	background-color: #ffffff;
+	border-radius: 50%;
+	font-size: 50px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.showCondition {
+	position: relative;
+	top: 80px;
+	width: 200px;
+	margin: 0px auto;
+	color: #cb4042;
+	font-size: 50px;
+}
+
+.showTime {
+	position: relative;
+	top: 100px;
+	width: 200px;
+	margin: 10px auto;
+	color: #cb4042;
+}

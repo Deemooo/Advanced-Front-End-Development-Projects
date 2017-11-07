@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>番茄钟</title>
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+
 	</head>
+
 	<body>
-		
+		<div id="container">
+			<h1>Pomodoro Clock</h1>
+			<div class="setContainer">
+				<div class="setTimeContainer">
+
+					<div class="setTime">
+						<p class="timeClass">
+							Work-Time
+						</p>
+						<i class="reduce fa fa-minus-square-o" aria-hidden="true" value="work"></i>
+						<input type="text" id="workTime" value="25" />
+						<i class="plus fa fa-plus-square-o" aria-hidden="true" value="work"></i>
+					</div>
+					<div class="setTime">
+						<p class="timeClass">
+							Break-Time
+						</p>
+						<i class="reduce fa fa-minus-square-o" aria-hidden="true" value="break"></i>
+						<input type="text" id="breakTime" value="10" />
+						<i class="plus fa fa-plus-square-o" aria-hidden="true" value="break"></i>
+					</div>
+				</div>
+
+			</div>
+			<div class="clock">
+				<h1 class="showCondition">
+					Work
+				</h1>
+				<div class="showTime">
+					25:00
+				</div>
+			</div>
+		</div>
+		<script src='jQuery/jquery-3.2.1.min.js'></script>
+		<script src="js/index.js"></script>
 	</body>
+
 </html>
