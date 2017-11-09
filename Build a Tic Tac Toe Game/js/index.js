@@ -32,14 +32,26 @@ $(function() {
 		if(that.children().length === 0) {
 			that.append(qizi);
 		}
+		//判断三子是否连线
+		var heng = that.siblings().find(".qizi");
+		var hengLength = heng.length;
+		var qiziValue = $(".qizi", that).text();
+		var newArr = [];
+		if(hengLength === 2) {
+			for(let i = 0; i < hengLength; i++) {
+				heng[i].innerText === qiziValue ? newArr.push(heng[i]) : null;
+			}
+			newArr.length === 2 ? endGame(1) : null;
+		}
 
 	}
 
-	function endGame(that) {
+	function endGame(endFlag) {
 		var qizishuliang = $(".qizi").length;
-		if(qizishuliang === 9) {
-//			var endflag = confirm("游戏结束!立即开始新游戏?");
-//			endflag === true ? chooseRole() : null;
+		if(qizishuliang === 9 || endFlag === 1) {
+			var endflag = confirm("游戏结束!立即开始新游戏?");
+			endflag === true ? chooseRole() : null;
 		}
+
 	}
 })
