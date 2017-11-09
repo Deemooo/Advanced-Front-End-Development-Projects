@@ -36,3 +36,12 @@
 	border-left: 2px solid #FFFFFF;
 	border-right: 2px solid #FFFFFF;
 }
+
+.qizi {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	font-size: 100px;
+	line-height: 200px;
+	color: #FFFFFF;
+}
