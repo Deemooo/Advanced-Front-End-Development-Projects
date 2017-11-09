@@ -1,0 +1,38 @@
+.container-fluid {
+	margin-top: 5%;
+	padding: 0px !important;
+	width: 700px !important;
+	height: 700px;
+	background-color: #000000;
+}
+
+.container {
+	width: 600px !important;
+	height: 600px;
+	margin: 50px;
+	padding: 0px !important;
+	font-size: 0;
+}
+
+.row {
+	margin: 0px !important;
+}
+
+.col-md-4 {
+	height: 200px;
+	padding: 0px !important;
+}
+
+.center-block {
+	border: 2px solid #FFFFFF;
+}
+
+.sx-block {
+	border-top: 2px solid #FFFFFF;
+	border-bottom: 2px solid #FFFFFF;
+}
+
+.zy-block {
+	border-left: 2px solid #FFFFFF;
+	border-right: 2px solid #FFFFFF;
+}
