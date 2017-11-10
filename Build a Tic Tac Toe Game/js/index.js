@@ -6,13 +6,9 @@ $(function() {
 	function chooseRole() {
 		//清空棋盘
 		$(".col-md-4").empty();
-		role1 = prompt("请输入您选择的角色(O或X):", "X");
-		role1 = (role1 === null ? "X" : role1.toUpperCase());
-		value = role1;
-		if(!(role1 === "X" || role1 === "O")) {
-			alert("请输入正确的角色名称!");
-			chooseRole();
-		}
+		//		role1 = prompt("请输入您选择的角色(O或X):", "X");
+		setWindow("prompt");
+
 	}
 	chooseRole();
 	$(".col-md-4").click(controls);
@@ -75,13 +71,40 @@ $(function() {
 	function endGame(endFlag) {
 		var qizishuliang = $(".qizi").length;
 		if(qizishuliang === 9 || endFlag === 1) {
-			var endflag = confirm("游戏结束!立即开始新游戏?");
-			endflag === true ? chooseRole() : null;
-
+			//			var endflag = confirm("游戏结束!立即开始新游戏?");
+			//			endflag === true ? chooseRole() : null;
+			setWindow("confirm");
 		}
 	}
 	//自定义弹窗
-	function setWindow(){
-		
+	function setWindow(flag) {
+		if(flag === "prompt") {
+			layer.prompt({
+				formType: 0,
+				value: 'X',
+				title: '请输入您选择的角色(O或X):',
+			}, function(val, index, elem) {
+				role1 = val;
+				role1 = (role1 === null ? "X" : role1.toUpperCase());
+				value = role1;
+				if(!(role1 === "X" || role1 === "O")) {
+					//			alert("请输入正确的角色名称!");
+					setWindow("alert");
+					setTimeout(chooseRole,3000);
+				}
+				layer.close(index);
+			});
+		} else if(flag === "alert") {
+			layer.alert('请输入正确的角色名称!');
+
+		} else if(flag === "confirm") {
+			layer.confirm('游戏结束!立即开始新游戏?', {
+				yes: function(index) {
+					chooseRole();
+					layer.close(index);
+				}
+			});
+		}
+
 	}
 })
