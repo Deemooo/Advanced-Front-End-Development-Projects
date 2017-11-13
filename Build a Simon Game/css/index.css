@@ -1,0 +1,40 @@
+html,body{
+	padding: 0px;
+	margin: 0px;
+	
+}
+.container{
+	width: 100%;
+	height: 100%;
+}
+.panel{
+	width: 400px;
+	height: 400px;
+	margin: 5% auto;
+}
+.by{
+	width: 100%;
+	height: 40%;
+	margin: 20px;
+	font-size: 0;
+}
+.sfzyy{
+	display: inline-block;
+	height: 160px;
+	width: 160px;
+	background-color: #eee;
+	margin: 0px 20px;
+}
+#sfzyy-1{
+		border-top-left-radius: 100%;
+
+}
+#sfzyy-2{
+	border-top-right-radius: 100%;
+}
+#sfzyy-3{
+	border-bottom-left-radius: 100%;
+}
+#sfzyy-4{
+	border-bottom-right-radius: 100%;
+}
