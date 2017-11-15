@@ -113,7 +113,7 @@ html{
   padding : 0px;
   font-size : 2em;
   width : 50px;
-  background-color: #32050C;
+  background-color: #222;
   position:relative;
   border : 4px solid #222;
   border-radius : 10px;
@@ -164,7 +164,7 @@ html{
 }
 
 .led-off{
-  color:#430710;
+  color:#ECE7EE;
 }
 
 .label{
@@ -214,6 +214,9 @@ html{
 .full-red{
   background-color : #FC0102;
 }
+#start{
+	background-color : #009900;
+}
 .red{
   background-color : #ce232d;
 }
@@ -230,18 +233,3 @@ html{
   background-color : #3271b5;
 }
 
-.yellow.light{
-  background-color : #fed93f;
-}
-
-.blue.light{
-  background-color : #1c8cff;
-}
-
-.red.light{
-  background-color : #ff4c4c;
-}
-
-.green.light{
-  background-color : #13ff7c;
-}
