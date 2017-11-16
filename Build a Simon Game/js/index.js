@@ -3,7 +3,7 @@ $(function() {
 	//游戏等级、方块颜色、游戏顺序数组、玩家顺序数组、方块颜色对应的音效
 	var game = {
 		level: 0,
-		colorArr: ["0", "1", "2", "3"],
+		colorArr: ["#0", "#1", "#2", "#3"],
 		currentGame: [],
 		player: [],
 		sound: {
@@ -17,12 +17,13 @@ $(function() {
 	function newGame() {
 		resetStartValue(1);
 		clearGame();
+		addCount();
 	}
 
 	function clearGame() {
 		game.currentGame = [];
 		game.level = 0;
-		addCount();
+		$("#level").text(0);
 	}
 	//游戏等级自加后继续游戏
 	function addCount() {
@@ -88,20 +89,16 @@ $(function() {
 	function playerTurn() {
 		//判断每一次点击的方块，和游戏顺序数组内相对应的那个方块颜色是否一致，同则继续游戏，不同则重新开始游戏
 		if(game.player[game.player.length - 1] !== game.currentGame[game.player.length - 1]) {
-
-			alert("走错啦！请重头再来吧！");
-			newGame();
-
+			layer.alert('走错了,游戏结束!');
 		} else {
 			//让玩家点玩该点的次数之后，判断是否够20次
 			var check = game.player.length === game.currentGame.length;
 			if(check) {
 				if(game.count === 20) {
 					resetStartValue(0);
-					alert("恭喜您！可以去参加《最强大脑》了！");
+					layer.alert('恭喜你!完成挑战!');
 				} else {
 					//不够20次，则等级提升，继续游戏
-					alert("Let's 继续！");
 					addCount();
 				}
 			}
@@ -120,7 +117,8 @@ $(function() {
 	});
 	//重置游戏
 	$("#reset").click(function() {
-		newGame();
+		resetStartValue(1);
+		clearGame();
 	});
 
 	function resetStartValue(value) {
