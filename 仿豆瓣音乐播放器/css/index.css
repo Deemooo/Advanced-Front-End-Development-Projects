@@ -23,8 +23,33 @@ body {
 	height: 550px;
 	margin: 100px 0px;
 	order: 1;
+	display: flex;
+	display: -webkit-flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
 	background-color: #2b2b2b;
 	color: #ffffff;
 	border-radius: 10px;
 	box-shadow: 1px 1px #444;
+}
+
+.fm {
+	width: 200px;
+	height: 200px;
+	margin: 20px 0px;
+	order: 1;
+}
+
+.qmxx {
+	width: 200px;
+	height: 60px;
+	margin: 0px;
+	order: 2;
+}
+
+.tool-bar {
+	width: 200px;
+	height: 20px;
+	margin: 10px;
+	order: 3;
 }
