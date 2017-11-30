@@ -100,7 +100,8 @@ img {
 	order: 1;
 }
 
-#song-progressbar {
+#song-progressbar-bg {
+	position: relative;
 	order: 2;
 	display: inline-block;
 	width: 200px;
@@ -108,9 +109,31 @@ img {
 	background-color: #fff;
 }
 
+#progressbar {
+	height: 100%;
+	width: 0;
+	background-color: #AAAAAA;
+}
+
+#progressbar-cycle {
+	display: none;
+	position: absolute;
+	top: -3px;
+	left: 0;
+	width: 6px;
+	height: 6px;
+	background-color: #AAAAAA;
+	border-radius: 50%;
+}
+
+#song-progressbar-bg:hover #progressbar-cycle {
+	display: block;
+}
+
 #start-time {
 	order: 3;
 }
-.fa{
+
+.fa {
 	cursor: pointer;
 }

@@ -13,8 +13,8 @@
 		<div class="container">
 			<div class="player">
 				<div class="song-info">
-					<h3 id="singer">幻听</h3>
-					<p id="song-name">许嵩</p>
+					<h3 id="song-name">幻听</h3>
+					<p id="singer">许嵩</p>
 
 				</div>
 				<div class="cover">
@@ -23,19 +23,23 @@
 
 				<div class="tools-bar">
 					<div class="player-icons-container other">
+						<i id="random" class="fa fa-random" aria-hidden="true"></i>
 						<i class="fa fa-volume-up" aria-hidden="true"></i>
-						<i class="fa fa-heart-o" aria-hidden="true"></i>
+						<i id="like" class="fa fa-heart-o" aria-hidden="true"></i>
 						<i class="fa fa-download" aria-hidden="true"></i>
 					</div>
 					<div class="song-progressbar-container">
-						<span class="song-time" id="start-time">00:00</span>
-						<div id="song-progressbar"></div>
-						<span class="song-time" id="end-time">00:00</span>
+						<span id="start-time" class="song-time">00:00</span>
+						<div id="song-progressbar-bg">
+							<div id="progressbar-cycle"></div>
+							<div id="progressbar"></div>
+						</div>
+						<span id="end-time" class="song-time">00:00</span>
 					</div>
 					<div class="player-icons-container">
 						<i class="fa fa-forward fa-2x" aria-hidden="true"></i>
 						<i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
-						<i class="fa fa-play fa-2x" aria-hidden="true"></i>
+						<i id="play" class="fa fa-play fa-2x" aria-hidden="true"></i>
 						<i class="fa fa-step-forward fa-2x" aria-hidden="true"></i>
 						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
 					</div>
