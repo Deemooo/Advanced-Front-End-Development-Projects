@@ -137,3 +137,6 @@ img {
 .fa {
 	cursor: pointer;
 }
+.upload{
+	display: none;
+}
