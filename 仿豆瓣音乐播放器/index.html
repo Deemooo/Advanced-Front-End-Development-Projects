@@ -11,6 +11,7 @@
 
 	<body>
 		<div class="container">
+			<input class="upload" type="file">
 			<div class="player">
 				<div class="song-info">
 					<h3 id="song-name">幻听</h3>
@@ -23,10 +24,19 @@
 
 				<div class="tools-bar">
 					<div class="player-icons-container other">
-						<i id="random" class="fa fa-random" aria-hidden="true"></i>
-						<i class="fa fa-volume-up" aria-hidden="true"></i>
-						<i id="like" class="fa fa-heart-o" aria-hidden="true"></i>
-						<i class="fa fa-download" aria-hidden="true"></i>
+						<a class="random" title="随机播放">
+							<i id="random" class="fa fa-random" aria-hidden="true"></i>
+						</a>
+						<a class="volume" title="音量">
+							<i class="fa fa-volume-up" aria-hidden="true"></i>
+						</a>
+						<a class="love" title="收藏">
+							<i id="like" class="fa fa-heart-o" aria-hidden="true"></i>
+						</a>
+						<a class="download" title="下载">
+							<i class="fa fa-download" aria-hidden="true"></i>
+						</a>
+
 					</div>
 					<div class="song-progressbar-container">
 						<span id="start-time" class="song-time">00:00</span>
@@ -37,11 +47,21 @@
 						<span id="end-time" class="song-time">00:00</span>
 					</div>
 					<div class="player-icons-container">
-						<i class="fa fa-forward fa-2x" aria-hidden="true"></i>
-						<i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
-						<i id="play" class="fa fa-play fa-2x" aria-hidden="true"></i>
-						<i class="fa fa-step-forward fa-2x" aria-hidden="true"></i>
-						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+						<a class="fast-forward" title="快进">
+							<i class="fa fa-forward fa-2x" aria-hidden="true"></i>
+						</a>
+						<a class="backward" title="上一曲">
+							<i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
+						</a>
+						<a class="play" title="播放">
+							<i id="play" class="fa fa-play fa-2x" aria-hidden="true"></i>
+						</a>
+						<a class="forward" title="下一曲">
+							<i class="fa fa-step-forward fa-2x" aria-hidden="true"></i>
+						</a>
+						<a class="upload" title="添加音乐">
+							<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+						</a>
 					</div>
 
 				</div>

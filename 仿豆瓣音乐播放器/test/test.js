@@ -5,10 +5,12 @@ function $(selector) {
 function Player(musicArry) {
     this.musicArry = musicArry;
     this.audio = $('audio');
-    this.img = $('.cover>img'); 
-    this.songName = $('#song-name'); // 歌曲名字
-    this.singer = $('#singer'); // 歌手名字
-    this.download = $('.fa-download'); // 点击下载
+    this.img = $('.right div img'); 
+    this.songName = $('.song_name'); // 歌曲名字
+    this.singer = $('.singer'); // 歌手名字
+    this.download = $('.download'); // 点击下载
+    this.deg = 0; // 图片旋转角度
+    this.imgtimer; // 图片旋转定时器
     this.bartimer; // 进度条定时器
     this.audio.volume = 0.5;
     this.random = false; // 是否随机播放
@@ -22,11 +24,22 @@ Player.prototype = {
         this.img.src = this.musicArry[index].imgSrc;
         this.songName.innerHTML =  this.musicArry[index].music;
         this.singer.innerHTML =  this.musicArry[index].name;
+        this.deg = 0;
         this.download.href = this.musicArry[index].musicSrc; 
         this.audio.dataset.index = index;
+        this.SetImgRotate();
+    },
+    SetImgRotate: function() {
+        clearInterval(this.imgtimer);
+        this.imgtimer = setInterval(() => {
+            this.deg += 0.5;
+            this.img.style.transform = 'rotate(' + this.deg + 'deg)';
+        }, 50);
+        this.clickNextMusic();
+        this.audio.addEventListener('canplay', this.displayBar.bind(this)); // 音频加载完成事件
     },
     clickNextMusic: function() {
-        var next = $('.fa-step-forward');
+        var next = $('.icon-jinrujiantou');
         var index = this.audio.dataset.index;
         next.onclick = () => { // 点击更换各种源文件以及图片旋转角度归零
             if (this.random) {
@@ -35,10 +48,10 @@ Player.prototype = {
                 index = ++index % this.musicArry.length;
             }
             this.audio.currentTime = 0; // 播放时间归零
-            $('.progressbar').style.width = 0; // 播放进度归零
-            $('.progressbar-cycle').style.left = 0; 
-            $('#end-time').innerHTML = '/00:00';
-            $('#start-time').innerHTML = '00:00';
+            $('.prrogress_bar').style.width = 0; // 播放进度归零
+            $('.bar_circle').style.left = 0; 
+            $('.display_end_time').innerHTML = '/00:00';
+            $('.display_cur_time').innerHTML = '00:00';
             this.init(index);
             if ($('.isplay').title != '播放') {
                 this.audio.play();
@@ -47,32 +60,37 @@ Player.prototype = {
     },
     someClickEvent: function() {
         var upload = $('.upload');
-        var like = $('#like');
-        var isplay = $('#play');
-        var bar_circle = $('#progressbar-cycle'); // 进度条圆点
-        var horn_bar_container = $('.fa-volume-up'); // 喇叭容器
+        var i = $('.love_icon i');
+        var isplay = $('.isplay i');
+        var bar_circle = $('.bar_circle'); // 进度条圆点
+        var horn_bar_container = $('.horn_bar_container'); // 喇叭容器
+        var horn_circle = $('.horn_circle'); // 喇叭进度条圆点
+        var horn_bar_bg = $('.horn_bar_bg'); // 喇叭进度条背景容器
+        var horn_bar = $('.horn_bar'); // 喇叭进度条
+        var horn_bar_container_two = $('.horn_bar_container_two'); // 喇叭进度条容器
+        var isplay_a = $('.isplay');
         var self = this;
-        $('.fa-plus').onclick = function() { // 上传
+        $('.icon-zengjia').onclick = function() { // 上传
             upload.click();
         }
-        $('.love').onclick = function() { // 收藏 取消收藏 
-            if (like.hasClass("fa-play")) {
-               like.removeClass("fa-heart-o").addClass("fa-heart");
+        $('.love_icon').onclick = function() { // 收藏 取消收藏 
+            if (i.className == 'iconfont icon-xihuan1') {
+                i.className = 'iconfont icon-xihuan';
                 this.title = '取消收藏';
             } else {
-                like.removeClass("fa-heart").addClass("fa-heart-o");
+                i.className = 'iconfont icon-xihuan1';
                 this.title = '收藏';
             }
         }
-        $(".play").onclick = function() { // 播放 暂停
-            if (isplay.hasClass("fa-play")) {
+        isplay_a.onclick = function() { // 播放 暂停
+            if (isplay.className == 'iconfont icon-zanting') {
                 self.audio.pause();
                 this.title = '播放';
-                 isplay.removeClass("fa-play").addClass("fa-pause");
+                isplay.className = 'iconfont icon-bofang';
             } else {
                 self.audio.play();
                 this.title = '暂停';
-                isplay.removeClass("fa-pause").addClass("fa-play");
+                isplay.className = 'iconfont icon-zanting';
                 self.audio.addEventListener('canplay', self.displayBar.bind(self));
             }
         }
