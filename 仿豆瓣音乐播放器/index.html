@@ -11,7 +11,8 @@
 
 	<body>
 		<div class="container">
-			<audio data-index='0' src="song/曹格 - 背叛.mp3">您的浏览器不支持HTML5的audio属性，请升级浏览器</audio>
+			<audio data-index='0' data-singer='曹格' data-songName='背叛' data-musicSrc='src/songs/背叛.mp3' data-imgSrc='src/images/曹格.jpg'
+			 src="src/songs/背叛.mp3">您的浏览器不支持HTML5的audio属性，请升级浏览器</audio>
 			<input class="upload" type="file">
 			<div class="player">
 				<div class="song-info">
@@ -20,9 +21,13 @@
 
 				</div>
 				<div class="cover">
-					<img src="src/images/123145302311773.jpg" />
+					<img src="src/images/曹格.jpg" />
 				</div>
 				<div class="tools-bar">
+					<div id="volume-progressbar-bg">
+						<div id="volume-progressbar-cycle"></div>
+						<div id="volume-progressbar"></div>
+					</div>
 					<div class="player-icons-container other">
 						<a class="random" title="随机播放">
 							<i id="random" class="fa fa-random" aria-hidden="true"></i>
