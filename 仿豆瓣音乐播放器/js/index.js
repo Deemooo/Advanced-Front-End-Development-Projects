@@ -33,7 +33,7 @@ $(function() {
 	//播放器內部功能
 	var innerFunction = {
 		changeSongInfo: function() {
-			var songName = audio.dataset.songName;
+			var songName = audio.dataset.songname;
 			var singer = audio.dataset.singer;
 			singer = singer ? singer : "佚名";
 			songName = songName ? songName : "无名曲";
@@ -41,7 +41,7 @@ $(function() {
 			$("#song-name").text(songName);
 		},
 		changeCover: function() {
-			var imgSrc = audio.dataset.imgSrc;
+			var imgSrc = audio.dataset.imgsrc;
 			imgSrc = imgSrc ? imgSrc : "src/images/default.jpg";
 			$(".cover>img").attr({
 				"src": imgSrc
@@ -125,7 +125,7 @@ $(function() {
 		},
 		collectMusic: function() {
 			var collectFlag = audio.dataset.collect;
-			collectFlag = collectFlag === collect ? cancel : collect;
+			collectFlag = collectFlag === 'collect' ? 'cancel' : 'collect';
 			audio.dataset.collect = collectFlag;
 		},
 		valumeControl: function(event) {
@@ -133,9 +133,9 @@ $(function() {
 			var volumeProgressbar = $("#volume-progressbar");
 			var volumeProgressbarCycle = $("#volume-progressbar-cycle");
 			volumeProgressbarBg.show();
-			var barBgHeight = volumeProgressbarBg.clientHeight; // 喇叭背景进度条高度
-			var barHeight = volumeProgressbar.clientHeight; // 喇叭进度条高度
-			var offTop = innerFunction.getScreenOffsetTop(volumeProgressbarCycle); // 相对于屏幕的偏移量
+			var barBgHeight = volumeProgressbarBg[0].clientHeight; // 喇叭背景进度条高度
+			var barHeight = volumeProgressbar[0].clientHeight; // 喇叭进度条高度
+			var offTop = innerFunction.getScreenOffsetTop(volumeProgressbarCycle[0]); // 相对于屏幕的偏移量
 			var differHeight = offTop - event.clientY;
 			var percent = (barHeight + differHeight) / barBgHeight;
 			if(percent < 0) {
@@ -144,15 +144,18 @@ $(function() {
 				percent = 1;
 			}
 			audio.volume = percent; // 音量
-			volumeProgressbar.style.height = percent * 100 + '%';
-			volumeProgressbarCycle.style.bottom = percent * 100 + '%';
+			volumeProgressbar.attr({
+				"height": percent * 100 + '%'
+			});
+			volumeProgressbarCycle.attr({
+				"bottom": percent * 100 + '%'
+			});
 
 		}
 	};
 	//播放控制功能
 	var playbackControl = {
 		play: function() {
-			innerFunction.changeIcon("play");
 			audio.play();
 		},
 		pause: function() {
@@ -161,11 +164,12 @@ $(function() {
 		},
 		forward: function() {
 			var index = audio.dataset.index;
-			index = index === musicArry.length - 1 ? 0 : index + 1;
+			index = index >= musicArry.length - 1 ? 0 : index + 1;
 			initPlayer(index);
-			audio.src = audio.dataset.musicSrc;
+			audio.src = audio.dataset.musicsrc;
 			innerFunction.changeSongInfo();
 			innerFunction.changeCover();
+			audio.play();
 			setInterval(function() {
 				innerFunction.changeTime();
 				innerFunction.progressBar();
@@ -174,11 +178,12 @@ $(function() {
 		},
 		backward: function() {
 			var index = audio.dataset.index;
-			index = index === 0 ? musicArry.length - 1 : index - 1;
+			index = index <= 0 ? musicArry.length - 1 : index - 1;
 			initPlayer(index);
-			audio.src = audio.dataset.musicSrc;
+			audio.src = audio.dataset.musicsrc;
 			innerFunction.changeSongInfo();
 			innerFunction.changeCover();
+			audio.play();
 			setInterval(function() {
 				innerFunction.changeTime();
 				innerFunction.progressBar();
@@ -195,22 +200,23 @@ $(function() {
 		},
 		randomPlay: function() {
 			audio.loop = true;
-			innerFunction.changeIcon("random");
 		}
 
 	};
 	//绑定点击事件
 	$("#random").click(function() {
+		innerFunction.changeIcon("random");
 		playbackControl.randomPlay();
 	});
 	$(".fa-volume-up").click(function(event) {
 		extraFunction.valumeControl(event);
 	});
 	$("#like").click(function() {
+		innerFunction.changeIcon("like");
 		extraFunction.collectMusic();
 	});
-	$(".fa-download").click(function() {
-		extraFunction.musicDownload();
+	$(".fa-download").click(function(event) {
+		extraFunction.musicDownload(event);
 	});
 	$(".fast-forward").click(function() {
 		playbackControl.fastForward();
@@ -219,6 +225,7 @@ $(function() {
 		playbackControl.backward();
 	});
 	$(".play").click(function() {
+		innerFunction.changeIcon("play");
 		playbackControl.play();
 	});
 	$(".forward").click(function() {
