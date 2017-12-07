@@ -152,7 +152,7 @@ $(function() {
 			var differHeight = offTop - event.clientY;
 			var percent = (barHeight + differHeight) / barBgHeight;
 			volumeProgressbar.attr({
-				"height": percent  + '%'
+				"height": percent + '%'
 			});
 			volumeProgressbarCycle.attr({
 				"bottom": percent + '%'
@@ -204,16 +204,17 @@ $(function() {
 				});
 			}
 
-		},
-		randomPlay: function() {
-			audio.loop = true;
 		}
-
 	};
 	//绑定点击事件
 	$("#random").click(function() {
 		innerFunction.changeIcon("random");
 		audio.loop ? audio.loop = false : audio.loop = true;
+		//待更改
+		var randomIndex = Math.floor(Math.random() * 10);
+		var arrLength = musicArry.length;
+		randomIndex = randomIndex <= arrLength ? randomIndex : 0;
+		initPlayer(randomIndex);
 	});
 	$(".fa-volume-up").click(function(event) {
 		$("#volume-progressbar-bg").toggle();
