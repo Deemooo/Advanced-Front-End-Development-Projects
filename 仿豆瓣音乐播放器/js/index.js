@@ -210,11 +210,6 @@ $(function() {
 	$("#random").click(function() {
 		innerFunction.changeIcon("random");
 		audio.loop ? audio.loop = false : audio.loop = true;
-		//待更改
-		var randomIndex = Math.floor(Math.random() * 10);
-		var arrLength = musicArry.length;
-		randomIndex = randomIndex <= arrLength ? randomIndex : 0;
-		initPlayer(randomIndex);
 	});
 	$(".fa-volume-up").click(function(event) {
 		$("#volume-progressbar-bg").toggle();
